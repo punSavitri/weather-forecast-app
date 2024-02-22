@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Weather App</title>
+    <!-- custome css link -->
+    <link rel="stylesheet" href="src/styles.css" />
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- axios javascript library cdn link -->
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- header section start-->
+      <header>
+        <!-- search form -->
+        <form action="" class="search-form" id="search-form">
+          <input
+            type="search"
+            placeholder="Enter your city name..."
+            class="search-form-input"
+            id="search-form-input"
+            required
+          />
+          <input type="submit" value="Search" class="search-button" />
+        </form>
+      </header>
+      <!-- main section start -->
+      <main>
+        <div class="current-weather-details">
+          <div>
+            <h1 class="current-weather-city" id="current-weather-city"></h1>
+            <p class="current-weather-info">
+              <span id="time"></span>, <span id="description"></span><br />
+              Humidity:<strong id="humidity"></strong> Wind:
+              <strong id="wind-speed"></strong>
+            </p>
+          </div>
+          <div class="current-weather-status">
+            <div id="current-weather-icon"></div>
+            <div
+              class="current-weather-temperature-value"
+              id="current-weather-temperature-value"
+            ></div>
+            <div class="current-weather-unit">°C</div>
+          </div>
+        </div>
+      </main>
+      <!-- footer section start -->
+      <footer>
+        This project was built by
+        <a href="https://github.com/punSavitri" target="_blank">Savitri Pun</a>,
+        is
+        <a
+          href="https://github.com/punSavitri/dynamic-weather-app"
+          target="_blank"
+          >open-sourced on GitHub</a
+        >
+        and
+        <a href="https://dynamicweatherapp2024.netlify.app/" target="_blank"
+          >hosted on Netlify</a
+        >
+      </footer>
+    </div>
+    <!-- script file -->
+    <script src="src/index.js"></script>
+  </body>
+</html>
