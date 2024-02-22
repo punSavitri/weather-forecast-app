@@ -26,6 +26,9 @@ function updateCityTemperature(response) {
   windElement.innerHTML = `${windSpeed}km/h`;
   let icon = response.data.condition.icon_url;
   iconElement.innerHTML = `<img src="${icon}" class="current-weather-icon">`;
+
+  //call getForecastWeather()function to show five days weather forecast of the city
+  getForecastWeather(response.data.city);
 }
 
 function formatDate(date) {
@@ -61,6 +64,19 @@ function handleSearchSubmit(event) {
   //calling searchCity() function
   searchCity(searchInputElement.value);
 }
+function displayForecastWeather(response) {
+  console.log(response.data);
+
+}
+function getForecastWeather(city) {
+  let api_key = "4c3a38t82d64bfo4330f17ff02bfbd97";
+  let api_url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${api_key}`;
+  console.log(api_url);
+
+  //axios request to fetch data from API
+  axios.get(api_url).then(displayForecastWeather);
+}
+
 //added submit event
 let searchForm = document.querySelector("#search-form");
 // console.log(searchForm);
