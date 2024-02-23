@@ -1,4 +1,6 @@
 //console.log("hello testing....");
+
+//this function only display updated current weather of particular city searched by user on page
 function updateCityTemperature(response) {
   //console.log(response.data);
   //console.log(response.data.temperature.current);
@@ -30,7 +32,7 @@ function updateCityTemperature(response) {
   //call getForecastWeather()function to show five days weather forecast of the city
   getForecastWeather(response.data.city);
 }
-
+//this function format  date, time, days based on timestamp provided by API  
 function formatDate(date) {
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let day = days[date.getDay()];
@@ -46,6 +48,7 @@ function formatDate(date) {
   return `${day} ${hour}:${minutes}`;
 }
 
+//this function get current weather of city data searched by user onto search engine
 function searchCity(city) {
   //make api call and update the UI 
   let api_key = "4c3a38t82d64bfo4330f17ff02bfbd97";
@@ -56,21 +59,24 @@ function searchCity(city) {
   axios.get(api_url).then(updateCityTemperature);
 }
 
+//this function handle submit events by user
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInputElement = document.querySelector("#search-form-input");
   //console.log(searchInputElement);
 
-  //calling searchCity() function
+  //call searchCity() function
   searchCity(searchInputElement.value);
 }
 
+//this function return converted day using timestamp provided by API  
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[date.getDay()];
-
 }
+
+//this function get response data from api and display all five days forecast on web page
 function displayForecastWeather(response) {
   console.log(response.data);
   let forecast = ""
@@ -92,10 +98,12 @@ function displayForecastWeather(response) {
           `;
     }
   })
+  //inject into html
   let forecastElement = document.querySelector("#forecast-weather");
   forecastElement.innerHTML = forecast;
-
 }
+
+//this function will get the five days forecast data of city searched by user
 function getForecastWeather(city) {
   let api_key = "4c3a38t82d64bfo4330f17ff02bfbd97";
   let api_url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${api_key}`;
@@ -105,10 +113,10 @@ function getForecastWeather(city) {
   axios.get(api_url).then(displayForecastWeather);
 }
 
-//added submit event
+//added submit event to form
 let searchForm = document.querySelector("#search-form");
 // console.log(searchForm);
 searchForm.addEventListener("submit", handleSearchSubmit);
 
-//as soon page load default city would be london weather
+//as soon page load default city would be london  
 searchCity("London");
