@@ -70,7 +70,7 @@ main {
 }
 .current-weather-unit {
   font-size: 28px;
-  margin-top: 6px;
+  margin-top: 0;
 }
 /* forecast styling */
 .weather-forecast-day {
@@ -81,9 +81,10 @@ main {
   opacity: 0.5;
 }
 .forecast-icon {
-  margin: 0;
-  width: 42px;
-  height: 42px;
+  margin: 5px auto;
+  width: 48px;
+  height: 48px;
+  line-height: 1;
 }
 .weather-forecast-temperature {
   display: flex;
@@ -91,6 +92,7 @@ main {
   font-size: 13px;
   font-weight: normal;
   line-height: 15px;
+  margin: 0 auto;
 }
 .weather-forecast-temperature-max {
   color: #202124;

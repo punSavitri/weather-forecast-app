@@ -42,8 +42,8 @@
             <h1 class="current-weather-city" id="current-weather-city"></h1>
             <p class="current-weather-info">
               <span id="time"></span>, <span id="description"></span><br />
-              Humidity:<strong id="humidity"></strong> Wind:
-              <strong id="wind-speed"></strong>
+              <span id="humidity"></span>
+              <span id="wind-speed"></span>
             </p>
           </div>
           <div class="current-weather-status">
@@ -56,10 +56,8 @@
           </div>
         </div>
         <!-- weather forecast section start -->
-        <div
-          class="container mt-3 d-inline-flex justify-content-center"
-          id="forecast-weather"
-        >
+        <div class="container mt-3">
+          <div class="row justify-content-around" id="forecast-weather"></div>
           <!--inject here five days forecast from js-->
         </div>
       </main>

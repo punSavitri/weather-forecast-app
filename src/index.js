@@ -21,9 +21,9 @@ function updateCityTemperature(response) {
   let description = response.data.condition.description;
   descriptionElement.innerHTML = description;
   let humidity = response.data.temperature.humidity;
-  humidityElement.innerHTML = `${humidity}%`;
+  humidityElement.innerHTML = `Humidity:<strong>${humidity}%</strong>`;
   let windSpeed = response.data.wind.speed;
-  windElement.innerHTML = `${windSpeed}km/h`;
+  windElement.innerHTML = `Wind:<strong>${windSpeed}km/h</strong>`;
   let icon = response.data.condition.icon_url;
   iconElement.innerHTML = `<img src="${icon}" class="current-weather-icon">`;
 
@@ -64,8 +64,36 @@ function handleSearchSubmit(event) {
   //calling searchCity() function
   searchCity(searchInputElement.value);
 }
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+
+}
 function displayForecastWeather(response) {
   console.log(response.data);
+  let forecast = ""
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecast += `
+            <div class="col-2 me-1  text-center rounded bg-light">            
+              <div class="weather-forecast-day">${formatDay(day.time)}</div>                      
+                <img
+                  src="${day.condition.icon_url}"
+                  class="forecast-icon"
+                  alt="weather icon"
+                />             
+              <div class="weather-forecast-temperature">
+              <div class="weather-forecast-temperature-max">${Math.round(day.temperature.maximum)}°</div>
+              <div class="weather-forecast-temperature-min">${Math.round(day.temperature.minimum)}°</div>
+              </div>                
+           </div>
+          `;
+    }
+  })
+  let forecastElement = document.querySelector("#forecast-weather");
+  forecastElement.innerHTML = forecast;
 
 }
 function getForecastWeather(city) {
